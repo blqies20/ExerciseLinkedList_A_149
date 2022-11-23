@@ -41,5 +41,18 @@ namespace ExerciseLinkedList_A_149
             else
                 return false;
         }
+        public void traverse() /*traverse all nodes of the list*/
+        {
+            if (listEmpty())
+                Console.WriteLine("\nList is empty");
+            else
+            {
+                Console.WriteLine("\nRecords in the list are:\n");
+                Node currentNode;
+                currentNode = LAST.next;
+                while (currentNode != LAST)
+                { }
+            }
+        }
     }
 }
