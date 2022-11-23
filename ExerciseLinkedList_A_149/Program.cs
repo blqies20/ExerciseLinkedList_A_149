@@ -34,13 +34,6 @@ namespace ExerciseLinkedList_A_149
             else
                 return false; /*returns false if the node is not found*/
         }
-        public bool listEmpty()
-        {
-            if (LAST == null)
-                return true;
-            else
-                return false;
-        }
         public void traverse() /*traverse all nodes of the list*/
         {
             if (listEmpty())
@@ -64,6 +57,21 @@ namespace ExerciseLinkedList_A_149
                 Console.WriteLine("\nList is empty");
             else
                 Console.WriteLine("\nThe first record in the list is: \n\n " + LAST.next.rollNumber + "  " + LAST.next.name);
+        }
+        public bool listEmpty()
+        {
+            if (LAST == null)
+                return true;
+            else
+                return false;
+        }
+        static void Main(string[] args)
+        {
+            CircularList obj = new CircularList();
+            while (true)
+            {
+
+            }
         }
     }
 }
