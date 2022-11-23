@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.AccessControl;
@@ -32,7 +33,44 @@ namespace ExerciseLinkedList_A_149
             Node newnode = new Node();
             newnode.rollNumber = rollNo;
             newnode.name = nm;
-        
+            /*Checks if the list is empty*/
+            if (LAST == null || rollNo == LAST.rollNumber)
+            {
+                if ((LAST != null) && (rollNo == LAST.rollNumber))
+                {
+                    Console.WriteLine("\nDuplicate roll numbers not allowed");
+                    return;
+                }
+                newnode.next = LAST;
+                if (LAST != null)
+                    LAST.prev = newnode;
+                newnode.prev = null;
+                LAST = newnode;
+                return;
+            }
+            Node previous, current;
+            for (current = previous = LAST; current != null && rollNo >= current.rollNumber; previous = current, current = current.next)
+            {
+                if (rollNo == current.rollNumber)
+                {
+                    Console.WriteLine("\nDuplicate roll numbers not allowed");
+                    return;
+                }
+            }
+            /*On the execution of the above for loop, prev and
+                 * current will point to those nodes between which the new node is to be inserted.*/
+            newnode.next = current;
+            newnode.prev = previous;
+
+            /*If the node is to be inserted at the end of the list.*/
+            if (current == null)
+            {
+                newnode.next = null;
+                previous.next = newnode;
+                return;
+            }
+            current.prev = newnode;
+            current.next = newnode;
         }
         public bool Search(int rollNo, ref Node previous, ref Node current) /*search for the specified node*/
         {
