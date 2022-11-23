@@ -22,6 +22,18 @@ namespace ExerciseLinkedList_A_149
         {
             LAST = null;
         }
+        public void addNode() /*adds a new node*/
+        {
+            int rollNo;
+            string nm;
+            Console.Write("\nEnter the roll number of the student: ");
+            rollNo = Convert.ToInt32(Console.ReadLine());
+            nm = Console.ReadLine();
+            Node newnode = new Node();
+            newnode.rollNumber = rollNo;
+            newnode.name = nm;
+        
+        }
         public bool Search(int rollNo, ref Node previous, ref Node current) /*search for the specified node*/
         {
             for (previous = current = LAST.next; current != LAST; previous = current, previous = previous.next)
@@ -83,7 +95,11 @@ namespace ExerciseLinkedList_A_149
                     char ch = Convert.ToChar(Console.ReadLine());
                     switch (ch)
                     {
-
+                        case '1':
+                            {
+                                obj.traverse();
+                            }
+                            break;
                     }
                 }
             }
