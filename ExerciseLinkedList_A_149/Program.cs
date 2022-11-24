@@ -180,6 +180,12 @@ namespace ExerciseLinkedList_A_149
                             break;
                         case '3':
                             {
+                                obj.traverse();
+                            }
+                            break;
+                        case '4':
+                            {
+
                                 if (obj.listEmpty() == true)
                                 {
                                     Console.WriteLine("\nList is empty");
@@ -199,13 +205,23 @@ namespace ExerciseLinkedList_A_149
                                 }
                             }
                             break;
-                        case '4':
+                        case '5':
                             {
-                                obj.traverse();
+                                obj.firstNode();
                             }
                             break;
-                        case '5':
+                        case '6':
+                            return;
+                            default:
+                            {
+                                Console.WriteLine("\nInvalid option");
+                                break;
+                            }
                     }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
                 }
             }
         }
