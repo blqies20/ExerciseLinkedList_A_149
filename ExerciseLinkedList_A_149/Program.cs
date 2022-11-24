@@ -72,6 +72,30 @@ namespace ExerciseLinkedList_A_149
             current.prev = newnode;
             current.next = newnode;
         }
+        public bool delNode(int rollNo) /*deletes the specified node*/
+        {
+            Node previous, current;
+            previous = current = null;
+            if (Search(rollNo, ref previous, ref current) == false)
+                return false;
+            if (current == LAST) /*if the first node is to be deleted*/
+            {
+                LAST = LAST.next;
+                if (LAST != null)
+                    LAST.prev = null;
+                return true;
+            }
+            if (current.next == null) /*if the last node is to be deleted*/
+            {
+                previous.next = null;
+                return true;
+            }
+            /*if the node to be deleted is in between the list then the following lines of code is executed*/
+            previous.next = current.next;
+            current.next.prev = previous;
+            return true;
+
+        }
         public bool Search(int rollNo, ref Node previous, ref Node current) /*search for the specified node*/
         {
             for (previous = current = LAST.next; current != LAST; previous = current, previous = previous.next)
@@ -135,9 +159,52 @@ namespace ExerciseLinkedList_A_149
                     {
                         case '1':
                             {
+                                obj.addNode();
+                            }
+                            break;
+                        case '2':
+                            {
+                                if(obj.listEmpty())
+                                {
+                                    Console.WriteLine("\nList is empty");
+                                    break;
+                                }
+                                Console.WriteLine("\nEnter the roll number of the student" + "Whose record is to be deleted: ");
+                                int rollNo = Convert.ToInt32(Console.ReadLine());
+                                Console.WriteLine();
+                                if (obj.delNode(rollNo) == false)
+                                    Console.WriteLine("Record not found");
+                                else
+                                    Console.WriteLine("Record with roll number" + rollNo + "deleted\n");
+                            }
+                            break;
+                        case '3':
+                            {
+                                if (obj.listEmpty() == true)
+                                {
+                                    Console.WriteLine("\nList is empty");
+                                    break;
+                                }
+                                Node prev, curr;
+                                prev = curr = null;
+                                Console.Write("\nEnter the roll number of the student whose record is to be searched: ");
+                                int num = Convert.ToInt32(Console.ReadLine());
+                                if (obj.Search(num, ref prev, ref curr) == false)
+                                    Console.WriteLine("\nRecord not found");
+                                else
+                                {
+                                    Console.WriteLine("\nRecord found");
+                                    Console.WriteLine("\nRoll number" + curr.rollNumber);
+                                    Console.WriteLine("\nName: " + curr.name);
+                                }
+                            }
+                            break;
+                        case '4':
+                            {
                                 obj.traverse();
                             }
                             break;
+                        case '5':
                     }
                 }
             }
